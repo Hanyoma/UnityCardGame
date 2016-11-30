@@ -1,7 +1,9 @@
 # UnityCardGame
 Multiplayer Card Game for EECE 4371 Final Project
+* Create a multiplayer card game using the Unity Networking API to allow 2 players to play cards over the network
 
-### Gameplay Instructions
+
+## Gameplay Instructions
 * Create a build by pressing the “Build and Run” button. This will prompt for a name for the executable, enter a name such as “networkTest”
 * A stand-alone player will launch, and show a resolution choice dialogue.
 * Choose the “windowed” checkbox and a lower resolution such as 640x480
@@ -14,6 +16,8 @@ Multiplayer Card Game for EECE 4371 Final Project
 * Press the "hit me" button to draw a card from the deck
 
 
+
+## Progress 11/30
 ### Done
 * Designed a CardModel object to represent a card on the board
 * Implemented the "Draw" button to draw a card randomly from the deck
@@ -23,6 +27,7 @@ Multiplayer Card Game for EECE 4371 Final Project
 
 ### To-Do
 * Synchronize displays over the network (so players can see each other's card)
+* Implement remote/online connections (rather than just LAN)
 * Implement turn-based actions (player has control, takes action, gives up control, then waits on opponent to take action)
 * Implement game logic for comparing cards to determine the winner
 * Implement graphic/GUI components to notify winners/losers
