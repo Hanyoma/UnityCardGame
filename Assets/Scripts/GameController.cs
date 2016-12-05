@@ -48,7 +48,6 @@ public class GameController : NetworkBehaviour
         }
     }
 
-    [Command]
     void CmdMakeCard()
     {
         print("cmdmakecard");
