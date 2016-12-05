@@ -19,10 +19,12 @@ public class GameController : NetworkBehaviour
     public override void OnStartLocalPlayer()
     {
         DontDestroyOnLoad(this);
+        GameObject.Find("Robot_Select").GetComponent<Button>().onClick.AddListener(() => onRobot_SelectClick());
     }
 
     public void makeDeck()
     {
+        
         List<string> names = new List<string>();
         switch (robot)
         {
@@ -79,7 +81,6 @@ public class GameController : NetworkBehaviour
         }
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
         makeDeck();
     }
 
