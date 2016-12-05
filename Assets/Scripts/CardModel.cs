@@ -9,6 +9,9 @@ public class CardModel : NetworkBehaviour
     public Sprite cardBack;
     private Card _card;
     public GameController MyGameController;
+    
+    [SyncVar(hook="IndexChanged")]
+    private int cardIndex = 0;
 
     public Card card
     {
@@ -30,7 +33,17 @@ public class CardModel : NetworkBehaviour
     public void ToggleFace(bool showFace)
     {
         print("toggled");
-        spriteRenderer.sprite = (showFace) ? faces[((int)_card.suit) * 13 + _card.value - 1] : cardBack;
+        if (!showFace)
+            spriteRenderer.sprite = cardBack;
+        else
+        {
+            cardIndex = ((int)_card.suit) * 13 + _card.value - 1;
+        }
+    }
+
+    void IndexChanged(int index)
+    {
+        spriteRenderer.sprite = faces[index];
     }
 
     void Awake()
@@ -41,13 +54,5 @@ public class CardModel : NetworkBehaviour
     public override string ToString()
     {
         return "CardModel: " + _card.ToString();
-    }
-    
-    void Update()
-    {
-        var x = Input.GetAxis("Horizontal") * 0.1f;
-        var z = Input.GetAxis("Vertical") * 0.1f;
-
-        transform.Translate(x, 0, z);
     }
 }
