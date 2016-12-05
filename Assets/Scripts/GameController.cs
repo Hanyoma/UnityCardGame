@@ -24,7 +24,8 @@ public class GameController : NetworkBehaviour
 
     public void makeDeck()
     {
-        
+        print("makeDeck()");
+        print(robot);
         List<string> names = new List<string>();
         switch (robot)
         {
@@ -56,13 +57,14 @@ public class GameController : NetworkBehaviour
         }
         for (int i = 0; i < 10; ++i)
         {
-            Instantiate(cardPrefab, new Vector3(-7 + i * 2, 0, 0), Quaternion.identity);
+            Instantiate(cardPrefab, new Vector3(-7 + i * 2, 0, 1), Quaternion.identity);
         }
     }
 
     public void onRobot_SelectClick()
     {
         print("onRobot_SelectClick()");
+
         if (!isLocalPlayer) return;
         print("is local player");
 
@@ -72,11 +74,13 @@ public class GameController : NetworkBehaviour
                 print("0");
                 // The Original
                 robot = Card.Robot.TheOriginal;
+                gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load("The Original - Character Card", typeof(Sprite)) as Sprite;
                 break;
             case 1:
                 print("1");
                 // Disco Fever
                 robot = Card.Robot.DiscoFever;
+                gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load("Disco Fever - Character Card", typeof(Sprite)) as Sprite;
                 break;
         }
 
