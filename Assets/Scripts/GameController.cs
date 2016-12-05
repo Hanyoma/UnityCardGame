@@ -14,15 +14,17 @@ public class GameController : NetworkBehaviour
 
     void Awake()
     {
+        DontDestroyOnLoad(this);
+        print(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.activeSceneChanged += makeDeck;
     }
 
     public override void OnStartLocalPlayer()
     {
-        DontDestroyOnLoad(this);
         GameObject.Find("Robot_Select").GetComponent<Button>().onClick.AddListener(() => onRobot_SelectClick());
     }
 
-    public void makeDeck()
+    void makeDeck(Scene previousScene, Scene newScene)
     {
         print("makeDeck()");
         print(robot);
@@ -40,6 +42,7 @@ public class GameController : NetworkBehaviour
                 names.Add("LUNGE");
                 names.Add("NAIL GUN");
                 names.Add("SPRINT");
+                gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load("The Original - Character Card", typeof(Sprite)) as Sprite;
                 break;
             case Card.Robot.DiscoFever:
                 names.Add("DISCO BLAST");
@@ -52,12 +55,13 @@ public class GameController : NetworkBehaviour
                 names.Add("STUN STEP");
                 names.Add("TRIPLE STEP PART ONE");
                 names.Add("TRIPLE STEP PART TWO");
+                gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load("Disco Fever - Character Card", typeof(Sprite)) as Sprite;
                 break;
 
         }
         for (int i = 0; i < 10; ++i)
         {
-            Instantiate(cardPrefab, new Vector3(-7 + i * 2, 0, 1), Quaternion.identity);
+            GameObject obj = Instantiate(cardPrefab, new Vector3(-7 + i * 2, 0, 1), Quaternion.identity) as GameObject;
         }
     }
 
@@ -66,26 +70,10 @@ public class GameController : NetworkBehaviour
         print("onRobot_SelectClick()");
 
         if (!isLocalPlayer) return;
-        print("is local player");
+        print("is local player")
 
-        switch(GameObject.Find("Robot_Dropdown").GetComponent<Dropdown>().value)
-        {
-            case 0:
-                print("0");
-                // The Original
-                robot = Card.Robot.TheOriginal;
-                gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load("The Original - Character Card", typeof(Sprite)) as Sprite;
-                break;
-            case 1:
-                print("1");
-                // Disco Fever
-                robot = Card.Robot.DiscoFever;
-                gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load("Disco Fever - Character Card", typeof(Sprite)) as Sprite;
-                break;
-        }
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        makeDeck();
+        robot = (Card.Robot)GameObject.Find("Robot_Dropdown").GetComponent<Dropdown>().value;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
     }
 
     private void Update()
