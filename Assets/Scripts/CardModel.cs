@@ -4,10 +4,8 @@ using UnityEngine.Networking;
 public class CardModel : NetworkBehaviour
 {
     SpriteRenderer spriteRenderer;
-
-    public Sprite[] faces;
-    public Sprite cardBack;
-    private Card _card;
+    
+    private Card _card = null;
     public GameController MyGameController;
     
     [SyncVar(hook="IndexChanged")]
@@ -23,11 +21,15 @@ public class CardModel : NetworkBehaviour
     {
         _card = c;
         MyGameController = gc;
+        gameObject.GetComponent<SpriteRenderer>().sprite = 
+            (localPlayerAuthority) ? Resources.Load("back_red",  typeof(Sprite)) as Sprite :
+                                     Resources.Load("back_blue", typeof(Sprite)) as Sprite;
     }
-
-    public CardModel()
+    
+    void Awake()
     {
-        _card = null;
+        MyGameController = GetComponent<GameController>() as GameController;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void ToggleFace(bool showFace)
@@ -37,22 +39,26 @@ public class CardModel : NetworkBehaviour
             spriteRenderer.sprite = cardBack;
         else
         {
-            cardIndex = ((int)_card.suit) * 13 + _card.value - 1;
+            //cardIndex = ((int)_card.suit) * 13 + _card.value - 1;
         }
     }
 
     void IndexChanged(int index)
     {
-        spriteRenderer.sprite = faces[index];
-    }
-
-    void Awake()
-    {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        //spriteRenderer.sprite = faces[index];
     }
 
     public override string ToString()
     {
         return "CardModel: " + _card.ToString();
+    }
+
+    public void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            // card was clicked, notify GameController
+            MyGameController.CardChosen(this);
+        }
     }
 }

@@ -3,17 +3,22 @@
 public class Card {
 
     // Private members
-    private Suit _suit;
-    private int _value;
+    private Robot _robot;
+    private string _name;
+
+    public enum Robot
+    {
+        TheOriginal=0, DiscoFever, Null
+    }
 
     // Accessors
-    public Suit suit
+    public Robot robot
     {
-        get { return _suit; }
+        get { return _robot; }
     }
-    public int value
+    public string name
     {
-        get { return _value; }
+        get { return _name; }
     }
 
     // Constructors
@@ -22,20 +27,26 @@ public class Card {
         Heart = 0, Diamond, Club, Spade
     }
 
-    public Card(Suit s, int val)
+    public Card()
     {
-        _suit = s;
-        _value = val;
+        _robot = Robot.Null;
+        _name = "";
+    }
+
+    public Card(Robot r, string name)
+    {
+        _robot = r;
+        _name = name;
     }
 
     public Card(Card _rhs)
     {
-        _suit = _rhs.suit;
-        _value = _rhs.value;
+        _robot = _rhs.robot;
+        _name = _rhs.name;
     }
 
     public override string ToString()
     {
-        return "Card: " + _suit + " " + _value;
+        return "Card: " + _robot + " " + _name;
     }
 }

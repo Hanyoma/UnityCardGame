@@ -6,69 +6,86 @@ using System;
 
 public class GameController : NetworkBehaviour
 {
-    private List<Card> deck;
-    private List<Card> discard;
-
-    private CardModel cardModel;
-    private GameObject card;
-    public GameObject card_prefab;
-    private bool created = false;
+    public GameObject cardPrefab;
+    private Card.Robot robot = Card.Robot.Null;
+    
+    public bool disableCards;
 
     void Awake()
     {
-        deck = new List<Card>();
+    }
 
-        // initialize deck
-        foreach(Card.Suit s in Enum.GetValues(typeof(Card.Suit)))
+    public override void OnStartLocalPlayer()
+    {
+        print("OnStartLocalPlayer()");
+        List<string> names = new List<string>();
+        switch(robot)
         {
-            for(int i = 1; i < 14; ++i)
-            {
-                deck.Add(new Card(s, i));
-            }
+            case Card.Robot.TheOriginal:
+                names.Add("BLINK");
+                names.Add("BUCKLE DOWN");
+                names.Add("COUNTER");
+                names.Add("DODGE");
+                names.Add("DUCK");
+                names.Add("FLAMETHROWER");
+                names.Add("LASER");
+                names.Add("LUNGE");
+                names.Add("NAIL GUN");
+                names.Add("SPRINT");
+                break;
+            case Card.Robot.DiscoFever:
+                names.Add("DISCO BLAST");
+                names.Add("ELECTRIC SHUFFLE");
+                names.Add("JUMP");
+                names.Add("MOONWALK");
+                names.Add("OVERDRIVE");
+                names.Add("SALSA SMACKDOWN");
+                names.Add("SIDE STEP");
+                names.Add("STUN STEP");
+                names.Add("TRIPLE STEP PART ONE");
+                names.Add("TRIPLE STEP PART TWO");
+                break;
+
         }
-        Shuffle(deck);
-        discard = new List<Card>();
+        for(int i = 0; i < 10; ++i)
+        {
+            Instantiate(cardPrefab, new Vector3(-7 + i * 2, 0, 0), Quaternion.identity);
+        }
+        print("End of OnStartLocalPlayer()");
+    }
+
+    public void onRobot_SelectClick()
+    {
+        print("onRobot_SelectClick()");
+        if (!isLocalPlayer) return;
+        print("is local player");
+
+        switch(GameObject.Find("myDropdown").GetComponent<Dropdown>().value)
+        {
+            case 0:
+                print("0");
+                // The Original
+                robot = Card.Robot.TheOriginal;
+                break;
+            case 1:
+                print("1");
+                // Disco Fever
+                robot = Card.Robot.DiscoFever;
+                break;
+        }
     }
 
     private void Update()
     {
         if (!isLocalPlayer)
             return;
-
-        if (!created)
-        {
-            CmdMakeCard();
-            created = true;
-        }
-        else
-        {
-            var x = Input.GetAxis("Horizontal") * 0.1f;
-            var z = Input.GetAxis("Vertical") * 0.1f;
-            card.transform.Translate(x,0,z);
-        }
+        
     }
 
-    void CmdMakeCard()
+    public void CardChosen(CardModel c)
     {
-        print("cmdmakecard");
-        // this [Command] is run on the server
-        card = Instantiate(card_prefab) as GameObject;
-        cardModel = card.GetComponent<CardModel>();
-        NetworkServer.Spawn(card);
-    }
+        // c was chosen, send to server and disable all inputs
 
-    void OnGUI()
-    {
-        if (GUI.Button(new Rect(10, 10, 100, 28), "Hit me!"))
-        {
-            print("hit me hit");
-            if (deck.Count == 0) return;
-            discard.Add(cardModel.card);
-            cardModel.card = new Card(deck[0]);
-            print(cardModel);
-            deck.RemoveAt(0);
-            cardModel.ToggleFace(true);
-        }
     }
 
     private static System.Random rng = new System.Random();
