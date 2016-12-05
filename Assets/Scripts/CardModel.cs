@@ -59,8 +59,9 @@ public class CardModel : NetworkBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            print(this);
             // card was clicked, notify GameController
-            MyGameController.CardChosen(this);
+            GetComponent<GameController>().CardChosen(this);
         }
     }
 }
