@@ -36,7 +36,9 @@ public class CardModel : NetworkBehaviour
     {
         print("toggled");
         if (!showFace)
-            spriteRenderer.sprite = cardBack;
+            spriteRenderer.sprite =
+            (localPlayerAuthority) ? Resources.Load("back_red", typeof(Sprite)) as Sprite :
+                                     Resources.Load("back_blue", typeof(Sprite)) as Sprite;
         else
         {
             //cardIndex = ((int)_card.suit) * 13 + _card.value - 1;
