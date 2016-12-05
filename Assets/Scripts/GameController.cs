@@ -61,7 +61,7 @@ public class GameController : NetworkBehaviour
         }
         for (int i = 0; i < 10; ++i)
         {
-            GameObject obj = Instantiate(cardPrefab, new Vector3(-7 + i * 2, 0, 1), Quaternion.identity) as GameObject;
+            Instantiate(cardPrefab, new Vector3(-7 + i * 2, 0, 1), Quaternion.identity) as GameObject;
         }
     }
 
@@ -70,7 +70,7 @@ public class GameController : NetworkBehaviour
         print("onRobot_SelectClick()");
 
         if (!isLocalPlayer) return;
-        print("is local player")
+        print("is local player");
 
         robot = (Card.Robot)GameObject.Find("Robot_Dropdown").GetComponent<Dropdown>().value;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
