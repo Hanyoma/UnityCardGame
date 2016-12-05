@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class DebugChangeCard : MonoBehaviour {
+public class DebugChangeCard : NetworkBehaviour {
 
     private CardModel cardModel;
+
+    [SyncVar(hook="IndexChanged")]
     private int cardIndex = 0;
 
     public GameObject card;
@@ -11,31 +14,30 @@ public class DebugChangeCard : MonoBehaviour {
 
     // Use this for initialization
     void Awake () {
-        cardModel = card.GetComponent<CardModel>();
+        print("I exist");
 	}
 	
     void OnGUI()
     {
+
         if (GUI.Button(new Rect(10, 10, 100, 28), "Hit me!"))
         {
+            if (!isServer)
+            {
+                return;
+            }
+            print("PRESSED A BUTTON");
             cardIndex = Random.Range(0, 52);
-            cardModel.cardIndex = cardIndex;
-            cardModel.ToggleFace(true);
 
-
-            /*
-            if (cardIndex >= cardModel.faces.Length)
-            {
-                cardIndex = 0;
-                cardModel.ToggleFace(false);
-            }
-            else
-            {
-                cardModel.cardIndex = cardIndex;
-                cardModel.ToggleFace(true);
-                cardIndex++;
-            }
-            */
         }
+    }
+
+    void IndexChanged(int index)
+    {
+        card = GameObject.FindWithTag("Player");
+        cardModel = card.GetComponent<CardModel>();
+        cardModel.cardIndex = index;
+        cardModel.ToggleFace(true);
+
     }
 }

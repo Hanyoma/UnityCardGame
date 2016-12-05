@@ -14,19 +14,32 @@ Platform assembly: D:\Unity\MobileProject\UnityCardGame\HelloWorld_Data\Managed\
 Loading D:\Unity\MobileProject\UnityCardGame\HelloWorld_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: D:\Unity\MobileProject\UnityCardGame\HelloWorld_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading D:\Unity\MobileProject\UnityCardGame\HelloWorld_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.099 seconds
+- Completed reload, in  0.044 seconds
 Platform assembly: D:\Unity\MobileProject\UnityCardGame\HelloWorld_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: D:\Unity\MobileProject\UnityCardGame\HelloWorld_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 0.691941 ms
-Log: connection {1} has been disconnected by timeout; address {::ffff:127.0.0.1:58729}
+UnloadTime: 0.834777 ms
+PRESSED A BUTTON
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Updating image
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+PRESSED A BUTTON
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Updating image
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Log: connection {1} has been disconnected by timeout; address {::ffff:127.0.0.1:58219}
 ServerDisconnected due to error: Timeout
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-Setting up 2 worker threads for Enlighten.
-  Thread -> id: 2354 -> priority: 1 
-  Thread -> id: 2f08 -> priority: 1 
