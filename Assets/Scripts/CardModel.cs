@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 
-public class CardModel : NetworkBehaviour
+public class CardModel : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
     
     private Card _card = null;
     public GameController MyGameController;
     
-    [SyncVar(hook="IndexChanged")]
     private int cardIndex = 0;
 
     public Card card
@@ -21,9 +20,7 @@ public class CardModel : NetworkBehaviour
     {
         _card = c;
         MyGameController = gc;
-        gameObject.GetComponent<SpriteRenderer>().sprite = 
-            (localPlayerAuthority) ? Resources.Load("back_red",  typeof(Sprite)) as Sprite :
-                                     Resources.Load("back_blue", typeof(Sprite)) as Sprite;
+        gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load("back_red", typeof(Sprite)) as Sprite;
     }
     
     void Awake()
@@ -36,20 +33,13 @@ public class CardModel : NetworkBehaviour
     {
         print("toggled");
         if (!showFace)
-            spriteRenderer.sprite =
-            (localPlayerAuthority) ? Resources.Load("back_red", typeof(Sprite)) as Sprite :
-                                     Resources.Load("back_blue", typeof(Sprite)) as Sprite;
+            spriteRenderer.sprite = Resources.Load("back_red", typeof(Sprite)) as Sprite;
         else
         {
             //cardIndex = ((int)_card.suit) * 13 + _card.value - 1;
         }
     }
-
-    void IndexChanged(int index)
-    {
-        //spriteRenderer.sprite = faces[index];
-    }
-
+    
     public override string ToString()
     {
         return "CardModel: " + _card.ToString();
@@ -57,11 +47,13 @@ public class CardModel : NetworkBehaviour
 
     public void Update()
     {
+        /*
         if (Input.GetMouseButtonDown(0))
         {
             print(this);
             // card was clicked, notify GameController
             GetComponent<GameController>().CardChosen(this);
         }
+        */
     }
 }

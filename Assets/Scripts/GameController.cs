@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using System;
+using UnityEngine.SceneManagement;
 
 public class GameController : NetworkBehaviour
 {
@@ -17,9 +18,13 @@ public class GameController : NetworkBehaviour
 
     public override void OnStartLocalPlayer()
     {
-        print("OnStartLocalPlayer()");
+        DontDestroyOnLoad(this);
+    }
+
+    public void makeDeck()
+    {
         List<string> names = new List<string>();
-        switch(robot)
+        switch (robot)
         {
             case Card.Robot.TheOriginal:
                 names.Add("BLINK");
@@ -47,11 +52,10 @@ public class GameController : NetworkBehaviour
                 break;
 
         }
-        for(int i = 0; i < 10; ++i)
+        for (int i = 0; i < 10; ++i)
         {
             Instantiate(cardPrefab, new Vector3(-7 + i * 2, 0, 0), Quaternion.identity);
         }
-        print("End of OnStartLocalPlayer()");
     }
 
     public void onRobot_SelectClick()
@@ -60,7 +64,7 @@ public class GameController : NetworkBehaviour
         if (!isLocalPlayer) return;
         print("is local player");
 
-        switch(GameObject.Find("myDropdown").GetComponent<Dropdown>().value)
+        switch(GameObject.Find("Robot_Dropdown").GetComponent<Dropdown>().value)
         {
             case 0:
                 print("0");
@@ -73,6 +77,10 @@ public class GameController : NetworkBehaviour
                 robot = Card.Robot.DiscoFever;
                 break;
         }
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+        makeDeck();
     }
 
     private void Update()
