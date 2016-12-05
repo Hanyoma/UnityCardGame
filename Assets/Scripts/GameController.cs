@@ -14,9 +14,6 @@ public class GameController : NetworkBehaviour
     public GameObject card_prefab;
     private bool created = false;
 
-    [SyncVar(hook="moveCard")]
-    private Vector3 cardLoc = new Vector3(0,0,0);
-
     void Awake()
     {
         deck = new List<Card>();
@@ -47,13 +44,8 @@ public class GameController : NetworkBehaviour
         {
             var x = Input.GetAxis("Horizontal") * 0.1f;
             var z = Input.GetAxis("Vertical") * 0.1f;
-            cardLoc = new Vector3(x, 0, z);
+            card.transform.Translate(x,0,z);
         }
-    }
-
-    void moveCard(Vector3 newLoc)
-    {
-        card.transform.Translate(newLoc);
     }
 
     [Command]
