@@ -18,6 +18,11 @@ public class GameController : NetworkBehaviour
     private const string MY_ROBOT_TAG = "myRobot";
     private const string OPP_ROBOT_TAG = "oppRobot";
 
+    private GameObject opponentCard = null;
+    private GameObject myCard = null;
+    private GameObject opponentRobot = null;
+    private GameObject myRobot = null;
+    
     public bool disableCards;
 
     void Awake()
@@ -25,6 +30,8 @@ public class GameController : NetworkBehaviour
         DontDestroyOnLoad(this);
         SceneManager.activeSceneChanged += makeDeck;
         transform.Translate(new Vector3(-7, 0, 0));
+        opponentRobot.transform.position = new Vector3(7, 0, 0);
+        myRobot.transform.position = new Vector3(-7, 0, 0);
     }
     
     public override void OnStartLocalPlayer()
@@ -161,7 +168,16 @@ public class GameController : NetworkBehaviour
     void RpcExecuteTurn()
     {
         print("RpcExecuteTurn()");
-        // do game logic
+        // Do game logic
+        int myPos = (int)myRobot.transform.position.x;
+        int enemyPos = (int)opponentRobot.transform.position.x;
+        Card mCard = myCard.GetComponent<Card>();
+        Card eCard = opponentCard.GetComponent<Card>();
+
+        move(ref myPos, ref enemyPos, mCard.backstep, eCard.backstep, mCard, eCard);
+        move(ref myPos, ref enemyPos, mCard.move, eCard.move, mCard, eCard);
+        ranged(ref myPos, ref enemyPos, mCard, eCard);
+        move(ref myPos, ref enemyPos, mCard.blink, eCard.blink, mCard, eCard);
 
         // remove used cards
         foreach(GameObject go in GameObject.FindGameObjectsWithTag(OPPTAG))
@@ -175,6 +191,158 @@ public class GameController : NetworkBehaviour
         foreach (GameObject cm in hand)
         {
             cm.GetComponent<BoxCollider2D>().enabled = true;
+        }
+    }
+
+    void move(ref int myPos, ref int enemyPos, int myMoves, int enemyMoves, Card mCard, Card oCard)
+    {
+        if(myPos == enemyPos)
+        {
+            if(fight(mCard, oCard))
+                return;
+        }
+        while(myMoves != 0 || enemyMoves != 0)
+        {
+            if (myPos == enemyPos)
+            {
+                if(fight(mCard, oCard))
+                {
+                    myPos = myPos - 1;
+                    enemyPos = enemyPos - 1;
+                    myMoves = 0;
+                    enemyMoves = 0;
+                }
+            }
+            else if (myPos == 7)
+            {
+                // I win
+            }
+            else if(enemyPos == -7)
+            {
+                // They win
+            }
+            else if(Math.Abs(myPos-enemyPos) == 1)
+            {
+                if(fight(mCard, oCard))
+                {
+                    myMoves = 0;
+                    enemyMoves = 0;
+                }
+            }
+            else
+            {
+                if(myMoves > 0)
+                {
+                    myPos++;
+                    myMoves--;
+                }
+                else if(myMoves < 0)
+                {
+                    myPos--;
+                    myMoves++;
+                }
+                if(enemyMoves > 0)
+                {
+                    enemyPos++;
+                    enemyMoves--;
+                }
+                else if(enemyMoves < 0)
+                {
+                    enemyPos--;
+                    enemyMoves++;
+                }
+            }
+        }
+
+    }
+
+    // If true, bounceback
+    // If false, pass
+    bool fight(Card mCard, Card oCard)
+    {
+        if(mCard.perfectMelee || oCard.perfectMelee)
+        {
+            if(mCard.perfectMelee && oCard.perfectMelee)
+            {
+                return true;
+            }
+            else
+            {
+                if (mCard.perfectMelee)
+                {
+                    // They lose
+                }
+                else
+                {
+                    // I lose
+                }
+            }
+            return false;
+        }
+        else if(mCard.melee || oCard.melee)
+        {
+            if (mCard.melee)
+            {
+                if (!oCard.evadeMelee && !oCard.melee)
+                {
+                    // I win
+                }
+            }
+            else
+            {
+                if(!mCard.evadeMelee && !mCard.melee)
+                {
+                    // I lose
+                }
+            }
+            if(mCard.evadeMelee || oCard.evadeMelee)
+            {
+                return false;
+            }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    void ranged(ref int myPos, ref int enemyPos, Card mCard, Card oCard) 
+    {
+        int myDistance = Math.Abs(myPos) + Math.Abs(enemyPos);
+        bool iCanHit = false;
+        bool enemyCanHit = false; 
+
+        if (myPos > enemyPos)
+            myDistance = -myDistance;
+
+        if(mCard.ranged || oCard.ranged)
+        {
+            if (mCard.ranged && !oCard.evadeRanged)
+            {
+                iCanHit = myDistance > mCard.rangedCloseDist && myDistance < mCard.rangedFarDist;
+            }
+            if(oCard.ranged && !mCard.evadeRanged)
+            {
+                enemyCanHit = myDistance > oCard.rangedCloseDist && myDistance < oCard.rangedFarDist;
+            }
+
+            if(iCanHit || enemyCanHit)
+            {
+                if(iCanHit && enemyCanHit)
+                {
+                    //No one died
+                    return;
+                }
+                else if (iCanHit)
+                {
+                    // I win
+                }
+                else
+                {
+                    // I lose
+                }
+            }
         }
     }
 
