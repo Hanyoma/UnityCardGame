@@ -142,7 +142,6 @@ public class GameController : NetworkBehaviour
     [ClientRpc]
     void RpcExecuteTurn()
     {
-
         // do game logic
         // reenable hand cards
     }
