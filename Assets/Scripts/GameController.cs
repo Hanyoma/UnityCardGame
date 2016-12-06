@@ -57,6 +57,7 @@ public class GameController : NetworkBehaviour
                 break;
 
         }
+        Shuffle(names);
         for (int i = 0; i < 4; ++i)
         {
             GameObject cd = Instantiate(cardPrefab, new Vector3(-7 + i * 2, 0, 1), Quaternion.identity) as GameObject;
@@ -72,6 +73,7 @@ public class GameController : NetworkBehaviour
             CardModel cm = cd.GetComponent<CardModel>();
             cm.card = new Card(robot, names[i]);
             cm.ToggleFace(true);
+            BoxCollider2D _bc = (BoxCollider2D)cd.gameObject.AddComponent(typeof(BoxCollider2D));
         }
     }
 
