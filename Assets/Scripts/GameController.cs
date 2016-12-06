@@ -8,14 +8,15 @@ using UnityEngine.SceneManagement;
 public class GameController : NetworkBehaviour
 {
     public GameObject cardPrefab;
+    public GameObject robotPrefab;
 
     private Card.Robot robot = Card.Robot.Null;
     private List<GameObject> hand = new List<GameObject>();
-    private GameObject myRobot = null;
-    private GameObject oppRobot = null;
 
     private const string OPPTAG = "oppCard";
     private const string MYTAG = "myCard";
+    private const string MY_ROBOT_TAG = "myRobot";
+    private const string OPP_ROBOT_TAG = "oppRobot";
 
     public bool disableCards;
 
@@ -29,7 +30,6 @@ public class GameController : NetworkBehaviour
     public override void OnStartLocalPlayer()
     {
         GameObject.Find("Robot_Select").GetComponent<Button>().onClick.AddListener(() => onRobot_SelectClick());
-        myRobot = 
     }
 
     void makeDeck(Scene previousScene, Scene newScene)
@@ -86,6 +86,13 @@ public class GameController : NetworkBehaviour
             hand.Add(cd);
             cd.gameObject.AddComponent(typeof(BoxCollider2D));
         }
+
+        GameObject myRobot = Instantiate(robotPrefab, new Vector3(-7, 0, -1), Quaternion.identity) as GameObject;
+        myRobot.tag = MY_ROBOT_TAG;
+        Robot rbt = myRobot.GetComponent<Robot>();
+        rbt.robot = robot;
+        GameObject oppRobot = Instantiate(robotPrefab, new Vector3(7, 0, -1), Quaternion.identity) as GameObject;
+        oppRobot.tag = OPP_ROBOT_TAG;
     }
 
     public void onRobot_SelectClick()
@@ -137,6 +144,8 @@ public class GameController : NetworkBehaviour
         if (myAddr != clientId)
         {
             print("not the originator");
+            Robot rbt = GameObject.FindGameObjectWithTag(OPP_ROBOT_TAG).GetComponent<Robot>();
+            rbt.robot = (Card.Robot)robot;
 
             GameObject oppCard = Instantiate(cardPrefab, new Vector3(1, 3, 1), Quaternion.identity) as GameObject;
             oppCard.tag = OPPTAG;
@@ -163,7 +172,6 @@ public class GameController : NetworkBehaviour
         {
             Destroy(go);
         }
-
         foreach (GameObject cm in hand)
         {
             cm.GetComponent<BoxCollider2D>().enabled = true;

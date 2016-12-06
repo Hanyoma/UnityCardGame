@@ -6,6 +6,8 @@ TagManager:
   tags:
   - myCard
   - oppCard
+  - myRobot
+  - oppRobot
   layers:
   - Default
   - TransparentFX
