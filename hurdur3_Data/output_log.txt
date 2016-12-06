@@ -100,3 +100,5 @@ NullReferenceException
 Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 204.
 Total: 0.239589 ms (FindLiveObjects: 0.012307 ms CreateObjectMapping: 0.017230 ms MarkObjects: 0.194051 ms  DeleteObjects: 0.015179 ms)
 
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 31d4 -> priority: 1 

@@ -9,7 +9,7 @@ public class GameController : NetworkBehaviour
 {
     public GameObject cardPrefab;
     private Card.Robot robot = Card.Robot.Null;
-    private List<CardModel> hand = new List<CardModel>();
+    private List<GameObject> hand = new List<GameObject>();
 
 
     public bool disableCards;
@@ -79,8 +79,9 @@ public class GameController : NetworkBehaviour
             GameObject cd = Instantiate(cardPrefab, new Vector3(-13 + i*2, -3, 1), Quaternion.identity) as GameObject;
             CardModel cm = cd.GetComponent<CardModel>();
             cm.card = new Card(robot, names[i]);
+            cm.setGameController(this);
             cm.ToggleFace(true);
-            hand.Add(cm);
+            hand.Add(cd);
             cd.gameObject.AddComponent(typeof(BoxCollider2D));
         }
     }
@@ -104,8 +105,13 @@ public class GameController : NetworkBehaviour
 
     public void CardChosen(CardModel c)
     {
+        if (!isLocalPlayer) return;
         // c was chosen, send to server and disable all inputs
-
+        print("cardchosen called local player");
+        foreach(GameObject cm in hand)
+        {
+            cm.GetComponent<BoxCollider2D>().enabled = false;
+        }
     }
 
     private static System.Random rng = new System.Random();

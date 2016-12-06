@@ -4,6 +4,8 @@ using UnityEngine.Networking;
 public class CardModel : MonoBehaviour
 {    
     private Card _card = null;
+    private GameController _gc;
+
     public Card card
     {
         get { return _card; }
@@ -22,7 +24,13 @@ public class CardModel : MonoBehaviour
     public CardModel(Card c, GameController gc)
     {
         _card = c;
+        _gc = gc;
         gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load("back_red", typeof(Sprite)) as Sprite;
+    }
+    
+    public void setGameController(GameController gc)
+    {
+        _gc = gc;
     }
     
     public void ToggleFace(bool showFace)
@@ -37,6 +45,6 @@ public class CardModel : MonoBehaviour
 
     void OnMouseDown()
     {
-        DestroyObject(this.gameObject);
+        _gc.CardChosen(this);
     }
 }
