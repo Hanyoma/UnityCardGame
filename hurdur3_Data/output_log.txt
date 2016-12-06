@@ -14,26 +14,26 @@ Platform assembly: C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\
 Loading C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.194 seconds
+- Completed reload, in  0.245 seconds
 Platform assembly: C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\System.dll (this message is harmless)
 desktop: 3000x2000 60Hz; virtual: 3000x2000 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 0.900102 ms
+UnloadTime: 0.935384 ms
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.512000 ms
+UnloadTime: 0.790154 ms
 
 Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 295.
-Total: 0.562872 ms (FindLiveObjects: 0.016820 ms CreateObjectMapping: 0.019692 ms MarkObjects: 0.516923 ms  DeleteObjects: 0.009025 ms)
+Total: 0.764718 ms (FindLiveObjects: 0.061128 ms CreateObjectMapping: 0.045128 ms MarkObjects: 0.647795 ms  DeleteObjects: 0.009025 ms)
 
 is local player
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 3.113026 ms
+UnloadTime: 4.200206 ms
 card set called
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
@@ -76,7 +76,51 @@ card set called
 
 
 Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 333.
-Total: 0.955897 ms (FindLiveObjects: 0.073435 ms CreateObjectMapping: 0.025435 ms MarkObjects: 0.734769 ms  DeleteObjects: 0.120615 ms)
+Total: 0.508718 ms (FindLiveObjects: 0.068923 ms CreateObjectMapping: 0.027076 ms MarkObjects: 0.390564 ms  DeleteObjects: 0.020102 ms)
+
+card chosen
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+CardModel: Card: DiscoFever MOONWALK
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+cardchosen called local player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+setHand(False)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+-132
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+RpcCardChosen
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+RpcCardChosen
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+not the originator
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Card(Clone) (UnityEngine.GameObject)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+card set called
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+RpcExecuteTurn()
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
 card chosen
  
@@ -90,15 +134,11 @@ cardchosen called local player
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-RpcCardChosen
+setHand(False)
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-originId: -144
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
-
-localID: -144
+-132
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
@@ -106,11 +146,7 @@ RpcCardChosen
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-originId: -141824
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
-
-localID: -134
+RpcCardChosen
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
@@ -118,9 +154,75 @@ not the originator
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
+Card(Clone) (UnityEngine.GameObject)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
 card set called
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
+RpcExecuteTurn()
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+RpcCardChosen
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+not the originator
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Card(Clone) (UnityEngine.GameObject)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+card set called
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+card chosen
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+CardModel: Card: DiscoFever TRIPLE STEP PART TWO
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+cardchosen called local player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+setHand(False)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+-132
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Log: connection {1} has been disconnected by timeout; address {::ffff:127.0.0.1:7777}
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+ClientDisconnected due to error: Timeout
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+UnloadTime: 0.772513 ms
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.Component.GetComponent[NetworkIdentity] () [0x00000] in <filename unknown>:0 
+  at UnityEngine.Networking.NetworkBehaviour.get_myView () [0x00000] in <filename unknown>:0 
+  at UnityEngine.Networking.NetworkBehaviour.get_isLocalPlayer () [0x00000] in <filename unknown>:0 
+  at GameController.makeDeck (Scene previousScene, Scene newScene) [0x00000] in <filename unknown>:0 
+  at (wrapper delegate-invoke) UnityEngine.Events.UnityAction`2<UnityEngine.SceneManagement.Scene, UnityEngine.SceneManagement.Scene>:invoke_void__this___Scene_Scene (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.Scene)
+  at UnityEngine.SceneManagement.SceneManager.Internal_ActiveSceneChanged (Scene previousActiveScene, Scene newActiveScene) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 216.
+Total: 0.399589 ms (FindLiveObjects: 0.017230 ms CreateObjectMapping: 0.013538 ms MarkObjects: 0.334769 ms  DeleteObjects: 0.033641 ms)
+
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 76c -> priority: 1 
+  Thread -> id: 2fc -> priority: 1 
