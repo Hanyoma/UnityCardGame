@@ -243,14 +243,6 @@ public class GameController : NetworkBehaviour
                     enemyMoves = 0;
                 }
             }
-            else if (myPos == 8)
-            {
-                iWin();
-            }
-            else if(enemyPos == 1)
-            {
-                iLose();
-            }
             else if(Math.Abs(myPos-enemyPos) == 1)
             {
                 if(fight(mCard, oCard))
@@ -279,6 +271,17 @@ public class GameController : NetworkBehaviour
                     enemyPos++;
                     enemyMoves++;
                 }
+
+
+            if (myPos >= 8)
+            {
+                iWin();
+            }
+            else if (enemyPos <= 1)
+            {
+                iLose();
+            }
+
         }
 
     }
