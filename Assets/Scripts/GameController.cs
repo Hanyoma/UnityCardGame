@@ -108,6 +108,16 @@ public class GameController : NetworkBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
     }
 
+    public void onNew_Game_ButtonClick()
+    {
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
+    }
+
+    public void onQuit_ButtonClick()
+    {
+        Application.Quit();
+    }
+
     public void CardChosen(CardModel c)
     {
         print("card chosen");
