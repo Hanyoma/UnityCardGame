@@ -10,7 +10,7 @@ public class GameController : NetworkBehaviour
     public GameObject cardPrefab;
     private Card.Robot robot = Card.Robot.Null;
     private List<GameObject> hand = new List<GameObject>();
-
+    private GameObject opponentCard = null;
 
     public bool disableCards;
 
@@ -20,6 +20,8 @@ public class GameController : NetworkBehaviour
         SceneManager.activeSceneChanged += makeDeck;
         transform.Translate(new Vector3(-7, 0, 0));
     }
+
+
 
     public override void OnStartLocalPlayer()
     {
@@ -90,17 +92,9 @@ public class GameController : NetworkBehaviour
     {
         if (!isLocalPlayer) return;
         print("is local player");
-
-
+        
         robot = (Card.Robot)GameObject.Find("Robot_Dropdown").GetComponent<Dropdown>().value;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
-    }
-
-    private void Update()
-    {
-        if (!isLocalPlayer)
-            return;
-        
     }
 
     public void CardChosen(CardModel c)
@@ -116,6 +110,30 @@ public class GameController : NetworkBehaviour
         GameObject c_gm = c.gameObject;
         hand.Remove(c_gm);
         c_gm.transform.position = new Vector3(-1, 3, 1);
+
+        CmdCardChosen(c.card, GetComponent<NetworkIdentity>().connectionToClient.connectionId);
+    }
+
+    [Command]
+    private void CmdCardChosen(Card card, int connectionId)
+    {
+        print("CmdCardChosen");
+        RpcCardChosen(card, connectionId);
+    }
+
+    [ClientRpc]
+    void RpcCardChosen(Card c, int origin)
+    {
+        print("RpcCardChosen");
+        if(GetComponent<NetworkIdentity>().connectionToClient.connectionId != origin)
+        {
+            print("not the originator");
+            opponentCard = Instantiate(cardPrefab, new Vector3(1, 3, 1), Quaternion.identity) as GameObject;
+            CardModel cm = opponentCard.GetComponent<CardModel>();
+            cm.card = c;
+            cm.setGameController(this);
+            cm.ToggleFace(true);
+        }
     }
 
     private static System.Random rng = new System.Random();

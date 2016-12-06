@@ -14,71 +14,99 @@ Platform assembly: C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\
 Loading C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.183 seconds
+- Completed reload, in  0.154 seconds
 Platform assembly: C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\System.dll (this message is harmless)
 desktop: 3000x2000 60Hz; virtual: 3000x2000 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.158154 ms
+UnloadTime: 0.876308 ms
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.776205 ms
+UnloadTime: 0.734769 ms
 
-Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 289.
-Total: 0.342564 ms (FindLiveObjects: 0.019692 ms CreateObjectMapping: 0.013948 ms MarkObjects: 0.304410 ms  DeleteObjects: 0.004512 ms)
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 283.
+Total: 0.703179 ms (FindLiveObjects: 0.054153 ms CreateObjectMapping: 0.018871 ms MarkObjects: 0.619897 ms  DeleteObjects: 0.008615 ms)
 
 is local player
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 9.947901 ms
-SPRINT
+UnloadTime: 2.385231 ms
+MOONWALK
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-LASER
+SIDE STEP
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-BLINK
+JUMP
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-FLAMETHROWER
+DISCO BLAST
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-DODGE
+OVERDRIVE
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-LUNGE
+TRIPLE STEP PART ONE
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-BUCKLE DOWN
+ELECTRIC SHUFFLE
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-NAIL GUN
+SALSA SMACKDOWN
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-COUNTER
+STUN STEP
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-DUCK
+TRIPLE STEP PART TWO
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
 
-Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 315.
-Total: 0.432410 ms (FindLiveObjects: 0.027487 ms CreateObjectMapping: 0.018051 ms MarkObjects: 0.366359 ms  DeleteObjects: 0.018871 ms)
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 321.
+Total: 0.414769 ms (FindLiveObjects: 0.041025 ms CreateObjectMapping: 0.013128 ms MarkObjects: 0.339692 ms  DeleteObjects: 0.020102 ms)
+
+RpcCardChosen
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GameController.RpcCardChosen (.Card c, Int32 origin) [0x00000] in <filename unknown>:0 
+  at GameController.InvokeRpcRpcCardChosen (UnityEngine.Networking.NetworkBehaviour obj, UnityEngine.Networking.NetworkReader reader) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Networking.NetworkIdentity.HandleRPC (Int32 cmdHash, UnityEngine.Networking.NetworkReader reader) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Networking.ClientScene.OnRPCMessage (UnityEngine.Networking.NetworkMessage netMsg) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Networking.NetworkConnection.HandleReader (UnityEngine.Networking.NetworkReader reader, Int32 receivedSize, Int32 channelId) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Networking.NetworkConnection.HandleBytes (System.Byte[] buffer, Int32 receivedSize, Int32 channelId) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Networking.NetworkConnection.TransportRecieve (System.Byte[] bytes, Int32 numBytes, Int32 channelId) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Networking.NetworkClient.Update () [0x00000] in <filename unknown>:0 
+  at UnityEngine.Networking.NetworkClient.UpdateClients () [0x00000] in <filename unknown>:0 
+  at UnityEngine.Networking.NetworkIdentity.UNetStaticUpdate () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
 
 cardchosen called local player
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GameController.CardChosen (.CardModel c) [0x00000] in <filename unknown>:0 
+  at CardModel.OnMouseDown () [0x00000] in <filename unknown>:0 
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.HitInfo:SendMessage(String)
+UnityEngine.SendMouseEvents:SendEvents(Int32, HitInfo)
+UnityEngine.SendMouseEvents:DoSendMouseEvents(Int32)
+ 
+(Filename:  Line: -1)
 
