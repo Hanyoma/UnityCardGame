@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameController : NetworkBehaviour
 {
     public GameObject cardPrefab;
+
     private Card.Robot robot = Card.Robot.Null;
     private List<GameObject> hand = new List<GameObject>();
     private GameObject opponentCard = null;
@@ -15,6 +16,8 @@ public class GameController : NetworkBehaviour
     private GameObject opponentRobot = null;
     private GameObject myRobot = null;
 
+    private const string OPPTAG = "oppCard";
+    private const string MYTAG = "myCard";
     public bool disableCards;
 
     void Awake()
@@ -66,10 +69,6 @@ public class GameController : NetworkBehaviour
 
         }
         Shuffle(names);
-        foreach(string name in names)
-        {
-            print(name);
-        }
         for (int i = 0; i < 4; ++i)
         {
             GameObject cd = Instantiate(cardPrefab, new Vector3(-7 + i*2, 0, 1), Quaternion.identity) as GameObject;
@@ -102,50 +101,60 @@ public class GameController : NetworkBehaviour
 
     public void CardChosen(CardModel c)
     {
-        if (!isLocalPlayer) return;
-
+        print("card chosen");
+        print(c);
         
         // c was chosen, send to server and disable all inputs
         print("cardchosen called local player");
-        foreach(GameObject cm in hand)
+        foreach (GameObject cm in hand)
         {
             cm.GetComponent<BoxCollider2D>().enabled = false;
         }
         GameObject c_gm = c.gameObject;
         hand.Remove(c_gm);
-        myCard = c_gm;
+        c_gm.tag = MYTAG;
         c_gm.transform.position = new Vector3(-1, 3, 1);
-
-        CmdCardChosen(c.card, GetComponent<NetworkIdentity>().connectionToClient.connectionId);
+        
+        CmdCardChosen((int)c.card.robot, c.card.name, GetComponent<NetworkIdentity>().GetInstanceID(), GameObject.FindGameObjectsWithTag(OPPTAG).Length > 0);
     }
 
     [Command]
-    private void CmdCardChosen(Card card, int connectionId)
+    private void CmdCardChosen(int robot, string name, int clientId, bool oppSentCard)
     {
         print("CmdCardChosen");
-        RpcCardChosen(card, connectionId);
-        // if both people chose their card
-        RpcExecuteTurn();
+        RpcCardChosen(robot, name, clientId);
+
+        // if both people chose their card, execute turn
+        if(oppSentCard)
+        {
+            RpcExecuteTurn();
+        }
     }
 
     [ClientRpc]
-    void RpcCardChosen(Card c, int origin)
+    void RpcCardChosen(int robot, string name, int clientId)
     {
         print("RpcCardChosen");
-        if(GetComponent<NetworkIdentity>().connectionToClient.connectionId != origin)
+        int myAddr = GetComponent<NetworkIdentity>().GetInstanceID();
+        if (myAddr != clientId)
         {
             print("not the originator");
-            opponentCard = Instantiate(cardPrefab, new Vector3(1, 3, 1), Quaternion.identity) as GameObject;
-            CardModel cm = opponentCard.GetComponent<CardModel>();
-            cm.card = c;
-            cm.setGameController(this);
+
+            GameObject oppCard = Instantiate(cardPrefab, new Vector3(1, 3, 1), Quaternion.identity) as GameObject;
+            oppCard.tag = OPPTAG;
+            print(oppCard);
+            CardModel cm = oppCard.GetComponent<CardModel>();
+            cm.card = new Card((Card.Robot)robot, name);
             cm.ToggleFace(true);
+            cm.setGameController(this);
         }
     }
 
     [ClientRpc]
     void RpcExecuteTurn()
     {
+        print("RpcExecuteTurn()");
+        // Do game logic
         int myPos = (int)myRobot.transform.position.x;
         int enemyPos = (int)opponentRobot.transform.position.x;
         Card mCard = myCard.GetComponent<Card>();
@@ -156,8 +165,20 @@ public class GameController : NetworkBehaviour
         ranged(ref myPos, ref enemyPos, mCard, eCard);
         move(ref myPos, ref enemyPos, mCard.blink, eCard.blink, mCard, eCard);
 
-        // do game logic
-        // reenable hand cards
+        // remove used cards
+        foreach(GameObject go in GameObject.FindGameObjectsWithTag(OPPTAG))
+        {
+            Destroy(go);
+        }
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag(MYTAG))
+        {
+            Destroy(go);
+        }
+
+        foreach (GameObject cm in hand)
+        {
+            cm.GetComponent<BoxCollider2D>().enabled = true;
+        }
     }
 
     void move(ref int myPos, ref int enemyPos, int myMoves, int enemyMoves, Card mCard, Card oCard)

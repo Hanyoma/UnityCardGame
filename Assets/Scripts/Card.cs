@@ -1,6 +1,7 @@
 ﻿using System;
 
-public class Card {
+public class Card
+{
 
     // Private members
     private Robot _robot;
@@ -19,7 +20,7 @@ public class Card {
 
     public enum Robot
     {
-        TheOriginal=0, DiscoFever, Null
+        TheOriginal = 0, DiscoFever, Null
     }
 
     // Accessors
@@ -159,9 +160,9 @@ public class Card {
                 _move = 3;
             }
         }
-        else if(r == Robot.DiscoFever)
+        else if (r == Robot.DiscoFever)
         {
-            if(name.Equals("DISCO BLAST"))
+            if (name.Equals("DISCO BLAST"))
             {
                 _move = 0;
                 _evadeMelee = true;
@@ -169,7 +170,7 @@ public class Card {
                 _rangedCloseDist = -1;
                 _rangedFarDist = 1;
             }
-            else if(name.Equals("ELECTRIC SHUFFLE"))
+            else if (name.Equals("ELECTRIC SHUFFLE"))
             {
                 _move = -2;
                 _blink = 4;
@@ -190,23 +191,23 @@ public class Card {
                 _move = 4;
                 // Next turn your move is 0
             }
-            else if(name.Equals("SALSA SMACKDOWN"))
+            else if (name.Equals("SALSA SMACKDOWN"))
             {
                 _move = 3;
                 _melee = true;
                 _blink = -2;
             }
-            else if(name.Equals("SIDE STEP"))
+            else if (name.Equals("SIDE STEP"))
             {
                 _move = 2;
                 _evadeMelee = true;
             }
-            else if(name.Equals("STUN STEP"))
+            else if (name.Equals("STUN STEP"))
             {
                 _move = 1;
                 //Your opponent moves 0
             }
-            else if(name.Equals("TRIPLE STEP PART ONE"))
+            else if (name.Equals("TRIPLE STEP PART ONE"))
             {
                 _move = 1;
                 _ranged = true;
@@ -214,7 +215,7 @@ public class Card {
                 _rangedFarDist = 1;
                 _blink = 1;
             }
-            else if(name.Equals("TRIPLE STEP PART TWO"))
+            else if (name.Equals("TRIPLE STEP PART TWO"))
             {
                 _move = 1;
                 _melee = true;
