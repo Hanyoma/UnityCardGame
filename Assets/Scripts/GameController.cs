@@ -16,6 +16,7 @@ public class GameController : NetworkBehaviour
     {
         DontDestroyOnLoad(this);
         SceneManager.activeSceneChanged += makeDeck;
+        transform.Translate(new Vector3(-7, 0, 0));
     }
 
     public override void OnStartLocalPlayer()
@@ -56,11 +57,21 @@ public class GameController : NetworkBehaviour
                 break;
 
         }
-        for (int i = 0; i < 10; ++i)
+        for (int i = 0; i < 4; ++i)
         {
             GameObject cd = Instantiate(cardPrefab, new Vector3(-7 + i * 2, 0, 1), Quaternion.identity) as GameObject;
             CardModel cm = cd.GetComponent<CardModel>();
             cm.card = new Card(robot, names[i]);
+
+            GameObject cd_o = Instantiate(cardPrefab, new Vector3(7 - i * 2, 0, 1), Quaternion.identity) as GameObject;
+            cd_o.GetComponent<CardModel>().setOpponent();
+        }
+        for(int i = 4; i < 10; ++i)
+        {
+            GameObject cd = Instantiate(cardPrefab, new Vector3(-13 + i * 2, -3, 1), Quaternion.identity) as GameObject;
+            CardModel cm = cd.GetComponent<CardModel>();
+            cm.card = new Card(robot, names[i]);
+            cm.ToggleFace(true);
         }
     }
 

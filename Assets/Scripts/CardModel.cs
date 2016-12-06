@@ -13,8 +13,16 @@ public class CardModel : MonoBehaviour
     public Card card
     {
         get { return _card; }
-        set { _card = (Card) value;
+        set
+        {
+            _card = (Card) value;
+            ToggleFace(false);
         }
+    }
+    
+    public void setOpponent()
+    {
+        gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load("back_blue", typeof(Sprite)) as Sprite;
     }
 
     public CardModel(Card c, GameController gc)
