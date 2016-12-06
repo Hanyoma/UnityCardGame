@@ -172,8 +172,13 @@ public class GameController : NetworkBehaviour
         ranged(ref myPos, ref enemyPos, mCard, eCard);
         move(ref myPos, ref enemyPos, mCard.blink, eCard.blink, mCard, eCard);
 
+        print("myPos: " + myPos);
+        print("enemyPos: " + enemyPos);
+        GameObject.FindGameObjectWithTag(MY_ROBOT_TAG).transform.position.Set(myPos, 0, -1);
+        GameObject.FindGameObjectWithTag(OPP_ROBOT_TAG).transform.position.Set(enemyPos, 0, -1);
+
         // remove used cards
-        foreach(GameObject go in GameObject.FindGameObjectsWithTag(OPPTAG))
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag(OPPTAG))
         {
             Destroy(go);
         }
@@ -237,12 +242,12 @@ public class GameController : NetworkBehaviour
                 }
                 if(enemyMoves > 0)
                 {
-                    enemyPos++;
+                    enemyPos--;
                     enemyMoves--;
                 }
                 else if(enemyMoves < 0)
                 {
-                    enemyPos--;
+                    enemyPos++;
                     enemyMoves++;
                 }
             }
