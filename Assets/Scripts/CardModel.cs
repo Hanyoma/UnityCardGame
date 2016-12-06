@@ -14,7 +14,6 @@ public class CardModel : MonoBehaviour
     {
         get { return _card; }
         set { _card = (Card) value;
-            gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load(_card.name, typeof(Sprite)) as Sprite;
         }
     }
 
@@ -34,12 +33,7 @@ public class CardModel : MonoBehaviour
     public void ToggleFace(bool showFace)
     {
         print("toggled");
-        if (!showFace)
-            spriteRenderer.sprite = Resources.Load("back_red", typeof(Sprite)) as Sprite;
-        else
-        {
-            //cardIndex = ((int)_card.suit) * 13 + _card.value - 1;
-        }
+        gameObject.GetComponent<SpriteRenderer>().sprite = (showFace) ? Resources.Load(_card.name, typeof(Sprite)) as Sprite : Resources.Load("back_red", typeof(Sprite)) as Sprite;
     }
     
     public override string ToString()
