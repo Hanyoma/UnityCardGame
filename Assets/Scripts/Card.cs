@@ -205,10 +205,9 @@ public class Card
                         _melee = true;
                         _blink = 1;
                         break;
-
                 }
                 break;
-            }
+        }
     }
     
     public override string ToString()
