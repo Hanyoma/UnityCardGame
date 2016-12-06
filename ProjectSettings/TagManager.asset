@@ -8,6 +8,7 @@ TagManager:
   - oppCard
   - myRobot
   - oppRobot
+  - handCard
   layers:
   - Default
   - TransparentFX

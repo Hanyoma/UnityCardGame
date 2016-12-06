@@ -11,13 +11,14 @@ public class GameController : NetworkBehaviour
     public GameObject robotPrefab;
 
     private Card.Robot robot = Card.Robot.Null;
-    private List<GameObject> hand = new List<GameObject>();
 
     private const string OPPTAG = "oppCard";
     private const string MYTAG = "myCard";
     private const string MY_ROBOT_TAG = "myRobot";
     private const string OPP_ROBOT_TAG = "oppRobot";
-    
+    private const string MY_HAND = "handCard";
+
+
     public bool disableCards;
 
     void Awake()
@@ -79,12 +80,15 @@ public class GameController : NetworkBehaviour
         for(int i = 4; i < 10; ++i)
         {
             GameObject cd = Instantiate(cardPrefab, new Vector3(-13 + i*2, -3, 1), Quaternion.identity) as GameObject;
+            cd.tag = MY_HAND;
+            cd.gameObject.AddComponent(typeof(BoxCollider2D));
             CardModel cm = cd.GetComponent<CardModel>();
             cm.card = new Card(robot, names[i]);
             cm.setGameController(this);
             cm.ToggleFace(true);
-            hand.Add(cd);
-            cd.gameObject.AddComponent(typeof(BoxCollider2D));
+            cd.GetComponent<BoxCollider2D>().enabled = true;
+            cd.GetComponent<BoxCollider2D>().isTrigger = true;
+            cd.GetComponent<BoxCollider2D>().size = new Vector3(4,5,1);
         }
 
         GameObject myRobot = Instantiate(robotPrefab, new Vector3(-7, 0, -1), Quaternion.identity) as GameObject;
@@ -111,12 +115,11 @@ public class GameController : NetworkBehaviour
         
         // c was chosen, send to server and disable all inputs
         print("cardchosen called local player");
-        foreach (GameObject cm in hand)
+        foreach (GameObject cm in GameObject.FindGameObjectsWithTag(MY_HAND))
         {
             cm.GetComponent<BoxCollider2D>().enabled = false;
         }
         GameObject c_gm = c.gameObject;
-        hand.Remove(c_gm);
         c_gm.tag = MYTAG;
         c_gm.transform.position = new Vector3(-1, 3, 1);
         
@@ -186,9 +189,11 @@ public class GameController : NetworkBehaviour
         {
             Destroy(go);
         }
+
         //reenable hand cards
-        foreach (GameObject cm in hand)
+        foreach (GameObject cm in GameObject.FindGameObjectsWithTag(MY_HAND))
         {
+            print(cm);
             cm.GetComponent<BoxCollider2D>().enabled = true;
         }
     }
