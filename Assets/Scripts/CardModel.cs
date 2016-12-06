@@ -6,14 +6,15 @@ public class CardModel : MonoBehaviour
     SpriteRenderer spriteRenderer;
     
     private Card _card = null;
-    public GameController MyGameController;
+    private GameController MyGameController;
     
     private int cardIndex = 0;
 
     public Card card
     {
         get { return _card; }
-        set { _card = (Card) value; }
+        set { _card = (Card) value;
+        }
     }
 
     public CardModel(Card c, GameController gc)
@@ -32,12 +33,7 @@ public class CardModel : MonoBehaviour
     public void ToggleFace(bool showFace)
     {
         print("toggled");
-        if (!showFace)
-            spriteRenderer.sprite = Resources.Load("back_red", typeof(Sprite)) as Sprite;
-        else
-        {
-            //cardIndex = ((int)_card.suit) * 13 + _card.value - 1;
-        }
+        gameObject.GetComponent<SpriteRenderer>().sprite = (showFace) ? Resources.Load(_card.name, typeof(Sprite)) as Sprite : Resources.Load("back_red", typeof(Sprite)) as Sprite;
     }
     
     public override string ToString()
