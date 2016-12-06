@@ -65,8 +65,8 @@ public class GameController : NetworkBehaviour
                 names.Add("TRIPLE STEP PART TWO");
                 gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load("Disco Fever - Character Card", typeof(Sprite)) as Sprite;
                 break;
-
         }
+
         Shuffle(names);
         for (int i = 0; i < 4; ++i)
         {
@@ -93,17 +93,14 @@ public class GameController : NetworkBehaviour
 
         GameObject myRobot = Instantiate(robotPrefab, new Vector3(-7, 0, -1), Quaternion.identity) as GameObject;
         myRobot.tag = MY_ROBOT_TAG;
-        Robot rbt = myRobot.GetComponent<Robot>();
-        rbt.robot = robot;
+        myRobot.GetComponent<Robot>().robot = robot;
         GameObject oppRobot = Instantiate(robotPrefab, new Vector3(7, 0, -1), Quaternion.identity) as GameObject;
         oppRobot.tag = OPP_ROBOT_TAG;
     }
 
     public void onRobot_SelectClick()
     {
-        if (!isLocalPlayer) return;
-        print("is local player");
-        
+        if (!isLocalPlayer) return;        
         robot = (Card.Robot)GameObject.Find("Robot_Dropdown").GetComponent<Dropdown>().value;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
     }

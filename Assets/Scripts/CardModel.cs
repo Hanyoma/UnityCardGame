@@ -35,7 +35,9 @@ public class CardModel : MonoBehaviour
     
     public void ToggleFace(bool showFace)
     {
-        gameObject.GetComponent<SpriteRenderer>().sprite = (showFace) ? Resources.Load(_card.name, typeof(Sprite)) as Sprite : Resources.Load("back_red", typeof(Sprite)) as Sprite;
+        gameObject.GetComponent<SpriteRenderer>().sprite = 
+            (showFace) ? Resources.Load(_card.name, typeof(Sprite)) as Sprite : 
+                         Resources.Load("back_red", typeof(Sprite)) as Sprite;
     }
     
     public override string ToString()
