@@ -1,0 +1,80 @@
+Initialize engine version: 5.4.3f1 (01f4c123905a)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics 520 (ID=0x1916)
+    Vendor:   Intel
+    VRAM:     2111 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.106 seconds
+Platform assembly: C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\System.dll (this message is harmless)
+desktop: 3000x2000 60Hz; virtual: 3000x2000 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.958359 ms
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.356512 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 283.
+Total: 0.659692 ms (FindLiveObjects: 0.016000 ms CreateObjectMapping: 0.016820 ms MarkObjects: 0.613743 ms  DeleteObjects: 0.011897 ms)
+
+is local player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.718770 ms
+ELECTRIC SHUFFLE
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+SIDE STEP
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+JUMP
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+TRIPLE STEP PART ONE
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+SALSA SMACKDOWN
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+DISCO BLAST
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+MOONWALK
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+TRIPLE STEP PART TWO
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+OVERDRIVE
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+STUN STEP
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 321.
+Total: 0.446769 ms (FindLiveObjects: 0.038974 ms CreateObjectMapping: 0.022974 ms MarkObjects: 0.365948 ms  DeleteObjects: 0.018461 ms)
+

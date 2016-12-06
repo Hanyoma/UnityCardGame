@@ -9,7 +9,9 @@ public class GameController : NetworkBehaviour
 {
     public GameObject cardPrefab;
     private Card.Robot robot = Card.Robot.Null;
-    
+    private List<CardModel> hand = new List<CardModel>();
+
+
     public bool disableCards;
 
     void Awake()
@@ -26,6 +28,7 @@ public class GameController : NetworkBehaviour
 
     void makeDeck(Scene previousScene, Scene newScene)
     {
+        if (!isLocalPlayer) return;
         List<string> names = new List<string>();
         switch (robot)
         {
@@ -58,22 +61,27 @@ public class GameController : NetworkBehaviour
 
         }
         Shuffle(names);
+        foreach(string name in names)
+        {
+            print(name);
+        }
         for (int i = 0; i < 4; ++i)
         {
-            GameObject cd = Instantiate(cardPrefab, new Vector3(-7 + i * 2, 0, 1), Quaternion.identity) as GameObject;
+            GameObject cd = Instantiate(cardPrefab, new Vector3(-7 + i*2, 0, 1), Quaternion.identity) as GameObject;
             CardModel cm = cd.GetComponent<CardModel>();
             cm.card = new Card(robot, names[i]);
 
-            GameObject cd_o = Instantiate(cardPrefab, new Vector3(7 - i * 2, 0, 1), Quaternion.identity) as GameObject;
+            GameObject cd_o = Instantiate(cardPrefab, new Vector3(7 - i*2, 0, 1), Quaternion.identity) as GameObject;
             cd_o.GetComponent<CardModel>().setOpponent();
         }
         for(int i = 4; i < 10; ++i)
         {
-            GameObject cd = Instantiate(cardPrefab, new Vector3(-13 + i * 2, -3, 1), Quaternion.identity) as GameObject;
+            GameObject cd = Instantiate(cardPrefab, new Vector3(-13 + i*2, -3, 1), Quaternion.identity) as GameObject;
             CardModel cm = cd.GetComponent<CardModel>();
             cm.card = new Card(robot, names[i]);
             cm.ToggleFace(true);
-            BoxCollider2D _bc = (BoxCollider2D)cd.gameObject.AddComponent(typeof(BoxCollider2D));
+            hand.Add(cm);
+            cd.gameObject.AddComponent(typeof(BoxCollider2D));
         }
     }
 
