@@ -15,7 +15,6 @@ public class GameController : NetworkBehaviour
     void Awake()
     {
         DontDestroyOnLoad(this);
-        print(SceneManager.GetActiveScene().buildIndex);
         SceneManager.activeSceneChanged += makeDeck;
     }
 
@@ -26,8 +25,6 @@ public class GameController : NetworkBehaviour
 
     void makeDeck(Scene previousScene, Scene newScene)
     {
-        print("makeDeck()");
-        print(robot);
         List<string> names = new List<string>();
         switch (robot)
         {
@@ -61,16 +58,15 @@ public class GameController : NetworkBehaviour
         }
         for (int i = 0; i < 10; ++i)
         {
-            Instantiate(cardPrefab, new Vector3(-7 + i * 2, 0, 1), Quaternion.identity) as GameObject;
+            GameObject cd = Instantiate(cardPrefab, new Vector3(-7 + i * 2, 0, 1), Quaternion.identity) as GameObject;
+            CardModel cm = cd.GetComponent<CardModel>();
+            cm.card = new Card(robot, names[i]);
         }
     }
 
     public void onRobot_SelectClick()
     {
-        print("onRobot_SelectClick()");
-
         if (!isLocalPlayer) return;
-        print("is local player");
 
         robot = (Card.Robot)GameObject.Find("Robot_Dropdown").GetComponent<Dropdown>().value;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);

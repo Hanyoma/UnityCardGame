@@ -6,14 +6,16 @@ public class CardModel : MonoBehaviour
     SpriteRenderer spriteRenderer;
     
     private Card _card = null;
-    public GameController MyGameController;
+    private GameController MyGameController;
     
     private int cardIndex = 0;
 
     public Card card
     {
         get { return _card; }
-        set { _card = (Card) value; }
+        set { _card = (Card) value;
+            gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load(_card.name, typeof(Sprite)) as Sprite;
+        }
     }
 
     public CardModel(Card c, GameController gc)
