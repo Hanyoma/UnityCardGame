@@ -11,6 +11,7 @@ public class GameController : NetworkBehaviour
     private Card.Robot robot = Card.Robot.Null;
     private List<GameObject> hand = new List<GameObject>();
     private GameObject opponentCard = null;
+    private GameObject myCard = null;
 
     public bool disableCards;
 
@@ -99,6 +100,7 @@ public class GameController : NetworkBehaviour
     {
         if (!isLocalPlayer) return;
 
+        
         // c was chosen, send to server and disable all inputs
         print("cardchosen called local player");
         foreach(GameObject cm in hand)
@@ -107,6 +109,7 @@ public class GameController : NetworkBehaviour
         }
         GameObject c_gm = c.gameObject;
         hand.Remove(c_gm);
+        myCard = c_gm;
         c_gm.transform.position = new Vector3(-1, 3, 1);
 
         CmdCardChosen(c.card, GetComponent<NetworkIdentity>().connectionToClient.connectionId);
@@ -139,6 +142,7 @@ public class GameController : NetworkBehaviour
     [ClientRpc]
     void RpcExecuteTurn()
     {
+
         // do game logic
         // reenable hand cards
     }
