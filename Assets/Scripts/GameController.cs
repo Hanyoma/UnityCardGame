@@ -245,11 +245,11 @@ public class GameController : NetworkBehaviour
             }
             else if (myPos == 8)
             {
-                // I win
+                iWin();
             }
             else if(enemyPos == 1)
             {
-                // They win
+                iLose();
             }
             else if(Math.Abs(myPos-enemyPos) == 1)
             {
@@ -259,8 +259,6 @@ public class GameController : NetworkBehaviour
                     enemyMoves = 0;
                 }
             }
-            else
-            {
                 if(myMoves > 0)
                 {
                     myPos++;
@@ -281,7 +279,6 @@ public class GameController : NetworkBehaviour
                     enemyPos++;
                     enemyMoves++;
                 }
-            }
         }
 
     }
@@ -300,11 +297,11 @@ public class GameController : NetworkBehaviour
             {
                 if (mCard.perfectMelee)
                 {
-                    // They lose
+                    iWin();
                 }
                 else
                 {
-                    // I lose
+                    iLose();
                 }
             }
             return false;
@@ -315,14 +312,14 @@ public class GameController : NetworkBehaviour
             {
                 if (!oCard.evadeMelee && !oCard.melee)
                 {
-                    // I win
+                    iWin();
                 }
             }
             else
             {
                 if(!mCard.evadeMelee && !mCard.melee)
                 {
-                    // I lose
+                    iLose();
                 }
             }
             if(mCard.evadeMelee || oCard.evadeMelee)
@@ -363,14 +360,23 @@ public class GameController : NetworkBehaviour
                 }
                 else if (iCanHit)
                 {
-                    // I win
+                    iWin();
                 }
                 else
                 {
-                    // I lose
+                    iLose();
                 }
             }
         }
+    }
+
+    void iWin()
+    {
+        SceneManager.LoadScene("You Win");
+    }
+    void iLose()
+    {
+        SceneManager.LoadScene("You Lose");
     }
 
     private static System.Random rng = new System.Random();
