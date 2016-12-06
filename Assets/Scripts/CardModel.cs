@@ -51,13 +51,11 @@ public class CardModel : MonoBehaviour
 
     public void Update()
     {
-        /*
-        if (Input.GetMouseButtonDown(0))
-        {
-            print(this);
-            // card was clicked, notify GameController
-            GetComponent<GameController>().CardChosen(this);
-        }
-        */
+
+    }
+
+    void OnMouseDown()
+    {
+        DestroyObject(this.gameObject);
     }
 }
