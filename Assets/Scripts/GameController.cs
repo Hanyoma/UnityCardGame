@@ -20,9 +20,7 @@ public class GameController : NetworkBehaviour
         SceneManager.activeSceneChanged += makeDeck;
         transform.Translate(new Vector3(-7, 0, 0));
     }
-
-
-
+    
     public override void OnStartLocalPlayer()
     {
         GameObject.Find("Robot_Select").GetComponent<Button>().onClick.AddListener(() => onRobot_SelectClick());
@@ -119,6 +117,8 @@ public class GameController : NetworkBehaviour
     {
         print("CmdCardChosen");
         RpcCardChosen(card, connectionId);
+        // if both people chose their card
+        RpcExecuteTurn();
     }
 
     [ClientRpc]
@@ -134,6 +134,13 @@ public class GameController : NetworkBehaviour
             cm.setGameController(this);
             cm.ToggleFace(true);
         }
+    }
+
+    [ClientRpc]
+    void RpcExecuteTurn()
+    {
+        // do game logic
+        // reenable hand cards
     }
 
     private static System.Random rng = new System.Random();
