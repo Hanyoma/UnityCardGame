@@ -50,4 +50,16 @@ public class CardModel : MonoBehaviour
         print("CardModel: OnMouseDown()");
         _gc.CardChosen(this);
     }
+
+    void OnMouseOver()
+    {
+        print("CardModel: OnMouseOver()" + this);
+        gameObject.GetComponent<Transform>().localScale = new Vector3(1F, 1F, 1F);
+    }
+
+    void OnMouseExit()
+    {
+        print("CardModel: OnMoueExit()" + this);
+        gameObject.GetComponent<Transform>().localScale = new Vector3(0.4F, 0.4F, 0.4F);
+    }
 }

@@ -28,7 +28,7 @@ public class Robot : MonoBehaviour {
                 gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load("Disco Fever - Character Card", typeof(Sprite)) as Sprite;
                 break;
             case Card.Robot.TheOriginal:
-                gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load("The Original - Character Card", typeof(Sprite)) as Sprite;
+                gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load("The Original - Player 1", typeof(Sprite)) as Sprite;
                 break;
         }
     }

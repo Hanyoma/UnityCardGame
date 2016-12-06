@@ -165,6 +165,7 @@ public class GameController : NetworkBehaviour
             print("not the originator");
             Robot rbt = GameObject.FindGameObjectWithTag(OPP_ROBOT_TAG).GetComponent<Robot>();
             rbt.robot = (Card.Robot)robot;
+            GameObject.FindGameObjectWithTag(OPP_ROBOT_TAG).GetComponent<Robot>().GetComponent<SpriteRenderer>().sprite = Resources.Load("The Original - Player 2", typeof(Sprite)) as Sprite;
 
             GameObject oppCard = Instantiate(cardPrefab, new Vector3(1, 3, 1), Quaternion.identity) as GameObject;
             oppCard.tag = OPPTAG;
