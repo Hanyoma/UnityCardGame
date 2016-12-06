@@ -2,7 +2,6 @@
 
 public class Card
 {
-
     // Private members
     private Robot _robot;
     private string _name;
@@ -74,7 +73,6 @@ public class Card
         get { return _evadeRanged; }
     }
 
-
     //Constructors
     public Card()
     {
@@ -98,137 +96,120 @@ public class Card
         _rangedCloseDist = 0;
         _rangedFarDist = 0;
 
-        if (r == Robot.TheOriginal)
+        switch(r)
         {
-            if (name.Equals("BLINK"))
-            {
-                _move = 0;
-                _blink = 3;
-            }
-            else if (name.Equals("BUCKLE DOWN"))
-            {
-                _move = 0;
-                _perfectMelee = true;
-                _melee = true;
-            }
-            else if (name.Equals("COUNTER"))
-            {
-                _move = 1;
-                _melee = true;
-                _evadeMelee = true;
-            }
-            else if (name.Equals("DODGE"))
-            {
-                _move = 1;
-                _evadeMelee = true;
-                _evadeRanged = true;
-            }
-            else if (name.Equals("DUCK"))
-            {
-                _move = 2;
-                _evadeRanged = true;
-            }
-            else if (name.Equals("FLAMETHROWER"))
-            {
-                _backstep = -1;
-                _move = 0;
-                _ranged = true;
-                _rangedCloseDist = 1;
-                _rangedFarDist = 2;
-            }
-            else if (name.Equals("LASER"))
-            {
-                _move = 0;
-                _ranged = true;
-                _rangedCloseDist = 1;
-                _rangedFarDist = 3;
-            }
-            else if (name.Equals("LUNGE"))
-            {
-                _move = 2;
-                _melee = true;
-            }
-            else if (name.Equals("NAIL GUN"))
-            {
-                _move = 2;
-                _ranged = true;
-                _rangedCloseDist = 0;
-                _rangedFarDist = 1;
-            }
-            else if (name.Equals("SPRINT"))
-            {
-                _move = 3;
-            }
-        }
-        else if (r == Robot.DiscoFever)
-        {
-            if (name.Equals("DISCO BLAST"))
-            {
-                _move = 0;
-                _evadeMelee = true;
-                _ranged = true;
-                _rangedCloseDist = -1;
-                _rangedFarDist = 1;
-            }
-            else if (name.Equals("ELECTRIC SHUFFLE"))
-            {
-                _move = -2;
-                _blink = 4;
-            }
-            else if (name.Equals("JUMP"))
-            {
-                _move = 0;
-                _melee = true;
-                _blink = 2;
-            }
-            else if (name.Equals("MOONWALK"))
-            {
-                _move = 5;
-                _blink = -2;
-            }
-            else if (name.Equals("OVERDRIVE"))
-            {
-                _move = 4;
-                // Next turn your move is 0
-            }
-            else if (name.Equals("SALSA SMACKDOWN"))
-            {
-                _move = 3;
-                _melee = true;
-                _blink = -2;
-            }
-            else if (name.Equals("SIDE STEP"))
-            {
-                _move = 2;
-                _evadeMelee = true;
-            }
-            else if (name.Equals("STUN STEP"))
-            {
-                _move = 1;
-                //Your opponent moves 0
-            }
-            else if (name.Equals("TRIPLE STEP PART ONE"))
-            {
-                _move = 1;
-                _ranged = true;
-                _rangedCloseDist = 1;
-                _rangedFarDist = 1;
-                _blink = 1;
-            }
-            else if (name.Equals("TRIPLE STEP PART TWO"))
-            {
-                _move = 1;
-                _melee = true;
-                _blink = 1;
-            }
+            case Robot.TheOriginal:
+                switch(name)
+                {
+                    case "BLINK":
+                        _move = 0;
+                        _blink = 3;
+                        break;
+                    case "BUCKLE DOWN":
+                        _move = 0;
+                        _perfectMelee = true;
+                        _melee = true;
+                        break;
+                    case "COUNTER":
+                        _move = 1;
+                        _melee = true;
+                        _evadeMelee = true;
+                        break;
+                    case "DODGE":
+                        _move = 1;
+                        _evadeMelee = true;
+                        _evadeRanged = true;
+                        break;
+                    case "DUCK":
+                        _move = 2;
+                        _evadeRanged = true;
+                        break;
+                    case "FLAMETHROWER":
+                        _backstep = -1;
+                        _move = 0;
+                        _ranged = true;
+                        _rangedCloseDist = 1;
+                        _rangedFarDist = 2;
+                        break;
+                    case "LASER":
+                        _move = 0;
+                        _ranged = true;
+                        _rangedCloseDist = 1;
+                        _rangedFarDist = 3;
+                        break;
+                    case "LUNGE":
+                        _move = 2;
+                        _melee = true;
+                        break;
+                    case "NAIL GUN":
+                        _move = 2;
+                        _ranged = true;
+                        _rangedCloseDist = 0;
+                        _rangedFarDist = 1;
+                        break;
+                    case "SPRINT":
+                        _move = 3;
+                        break;
+                }
+                break;
+
+            case Robot.DiscoFever:
+                switch(name)
+                {
+                    case "DISCO BLAST":
+                        _move = 0;
+                        _evadeMelee = true;
+                        _ranged = true;
+                        _rangedCloseDist = -1;
+                        _rangedFarDist = 1;
+                        break;
+                    case "ELECTRIC SHUFFLE":
+                        _move = -2;
+                        _blink = 4;
+                        break;
+                    case "JUMP":
+                        _move = 0;
+                        _melee = true;
+                        _blink = 2;
+                        break;
+                    case "MOONWALK":
+                        _move = 5;
+                        _blink = -2;
+                        break;
+                    case "OVERDRIVE":
+                        _move = 4;
+                        // Next turn your move is 0
+                        break;
+                    case "SALSA SMACKDOWN":
+                        _move = 3;
+                        _melee = true;
+                        _blink = -2;
+                        break;
+                    case "SIDE STEP":
+                        _move = 2;
+                        _evadeMelee = true;
+                        break;
+                    case "STUN STEP":
+                        _move = 1;
+                        //Your opponent moves 0
+                        break;
+                    case "TRIPLE STEP PART ONE":
+                        _move = 1;
+                        _ranged = true;
+                        _rangedCloseDist = 1;
+                        _rangedFarDist = 1;
+                        _blink = 1;
+                        break;
+                    case "TRIPLE STEP PART TWO":
+                        _move = 1;
+                        _melee = true;
+                        _blink = 1;
+                        break;
+                }
+                break;
         }
     }
-
-    public Card(Card _rhs) : this(_rhs.robot, _rhs.name)
-    {
-
-    }
-
+    
     public override string ToString()
     {
         return "Card: " + _robot + " " + _name;
