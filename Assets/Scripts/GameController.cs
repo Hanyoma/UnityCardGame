@@ -18,6 +18,8 @@ public class GameController : NetworkBehaviour
     private const string OPP_ROBOT_TAG = "oppRobot";
     private const string MY_HAND = "handCard";
 
+    private Dictionary<int, int> indexing = new Dictionary<int, int>();
+    private Dictionary<int, int> reverse = new Dictionary<int, int>();
 
     public bool disableCards;
 
@@ -26,6 +28,13 @@ public class GameController : NetworkBehaviour
         DontDestroyOnLoad(this);
         SceneManager.activeSceneChanged += makeDeck;
         transform.Translate(new Vector3(-7, 0, 0));
+        int count = 0;
+        for(int i = -7; i <= 7; i += 2)
+        {
+            count++;
+            indexing.Add(i, count);
+            reverse.Add(count, i);
+        }
     }
     
     public override void OnStartLocalPlayer()
@@ -165,20 +174,30 @@ public class GameController : NetworkBehaviour
     {
         print("RpcExecuteTurn()");
         // Do game logic
-        int myPos = (int)GameObject.FindGameObjectWithTag(MY_ROBOT_TAG).transform.position.x;
-        int enemyPos = (int)GameObject.FindGameObjectWithTag(OPP_ROBOT_TAG).transform.position.x;
+        int myCPos = (int)GameObject.FindGameObjectWithTag(MY_ROBOT_TAG).transform.position.x;
+        int enemyCPos = (int)GameObject.FindGameObjectWithTag(OPP_ROBOT_TAG).transform.position.x;
         Card mCard = GameObject.FindGameObjectWithTag(MYTAG).GetComponent<CardModel>().card;
         Card eCard = GameObject.FindGameObjectWithTag(OPPTAG).GetComponent<CardModel>().card;
+        int myPos, enemyPos;
+        indexing.TryGetValue(myCPos, out myPos);
+        indexing.TryGetValue(enemyCPos, out enemyPos);
 
+        print("Backstepping");
         move(ref myPos, ref enemyPos, mCard.backstep, eCard.backstep, mCard, eCard);
+        print("Moving");
         move(ref myPos, ref enemyPos, mCard.move, eCard.move, mCard, eCard);
+        print("Ranged");
         ranged(ref myPos, ref enemyPos, mCard, eCard);
+        print("Blink");
         move(ref myPos, ref enemyPos, mCard.blink, eCard.blink, mCard, eCard);
 
         print("myPos: " + myPos);
         print("enemyPos: " + enemyPos);
-        GameObject.FindGameObjectWithTag(MY_ROBOT_TAG).transform.position.Set(myPos, 0, -1);
-        GameObject.FindGameObjectWithTag(OPP_ROBOT_TAG).transform.position.Set(enemyPos, 0, -1);
+
+        reverse.TryGetValue(myPos, out myCPos);
+        reverse.TryGetValue(enemyPos, out enemyCPos);
+        GameObject.FindGameObjectWithTag(MY_ROBOT_TAG).transform.position = new Vector3(myCPos, 0, -1);
+        GameObject.FindGameObjectWithTag(OPP_ROBOT_TAG).transform.position = new Vector3(enemyCPos, 0, -1);
 
         // remove used cards
         foreach (GameObject go in GameObject.FindGameObjectsWithTag(OPPTAG))
@@ -217,11 +236,11 @@ public class GameController : NetworkBehaviour
                     enemyMoves = 0;
                 }
             }
-            else if (myPos == 7)
+            else if (myPos == 8)
             {
                 // I win
             }
-            else if(enemyPos == -7)
+            else if(enemyPos == 1)
             {
                 // They win
             }
@@ -313,22 +332,19 @@ public class GameController : NetworkBehaviour
 
     void ranged(ref int myPos, ref int enemyPos, Card mCard, Card oCard) 
     {
-        int myDistance = Math.Abs(myPos) + Math.Abs(enemyPos);
+        int myDistance = enemyPos - myPos;
         bool iCanHit = false;
         bool enemyCanHit = false; 
-
-        if (myPos > enemyPos)
-            myDistance = -myDistance;
 
         if(mCard.ranged || oCard.ranged)
         {
             if (mCard.ranged && !oCard.evadeRanged)
             {
-                iCanHit = myDistance > mCard.rangedCloseDist && myDistance < mCard.rangedFarDist;
+                iCanHit = myDistance >= mCard.rangedCloseDist && myDistance <= mCard.rangedFarDist;
             }
             if(oCard.ranged && !mCard.evadeRanged)
             {
-                enemyCanHit = myDistance > oCard.rangedCloseDist && myDistance < oCard.rangedFarDist;
+                enemyCanHit = myDistance >= oCard.rangedCloseDist && myDistance <= oCard.rangedFarDist;
             }
 
             if(iCanHit || enemyCanHit)
