@@ -17,11 +17,6 @@ public class GameController : NetworkBehaviour
     private const string MYTAG = "myCard";
     private const string MY_ROBOT_TAG = "myRobot";
     private const string OPP_ROBOT_TAG = "oppRobot";
-
-    private GameObject opponentCard = null;
-    private GameObject myCard = null;
-    private GameObject opponentRobot = null;
-    private GameObject myRobot = null;
     
     public bool disableCards;
 
@@ -30,8 +25,6 @@ public class GameController : NetworkBehaviour
         DontDestroyOnLoad(this);
         SceneManager.activeSceneChanged += makeDeck;
         transform.Translate(new Vector3(-7, 0, 0));
-        opponentRobot.transform.position = new Vector3(7, 0, 0);
-        myRobot.transform.position = new Vector3(-7, 0, 0);
     }
     
     public override void OnStartLocalPlayer()
@@ -169,10 +162,10 @@ public class GameController : NetworkBehaviour
     {
         print("RpcExecuteTurn()");
         // Do game logic
-        int myPos = (int)myRobot.transform.position.x;
-        int enemyPos = (int)opponentRobot.transform.position.x;
-        Card mCard = myCard.GetComponent<Card>();
-        Card eCard = opponentCard.GetComponent<Card>();
+        int myPos = (int)GameObject.FindGameObjectWithTag(MY_ROBOT_TAG).transform.position.x;
+        int enemyPos = (int)GameObject.FindGameObjectWithTag(OPP_ROBOT_TAG).transform.position.x;
+        Card mCard = GameObject.FindGameObjectWithTag(MYTAG).GetComponent<CardModel>().card;
+        Card eCard = GameObject.FindGameObjectWithTag(OPPTAG).GetComponent<CardModel>().card;
 
         move(ref myPos, ref enemyPos, mCard.backstep, eCard.backstep, mCard, eCard);
         move(ref myPos, ref enemyPos, mCard.move, eCard.move, mCard, eCard);
@@ -188,6 +181,7 @@ public class GameController : NetworkBehaviour
         {
             Destroy(go);
         }
+        //reenable hand cards
         foreach (GameObject cm in hand)
         {
             cm.GetComponent<BoxCollider2D>().enabled = true;

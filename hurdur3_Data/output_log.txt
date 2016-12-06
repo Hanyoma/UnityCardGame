@@ -14,26 +14,26 @@ Platform assembly: C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\
 Loading C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.207 seconds
+- Completed reload, in  0.118 seconds
 Platform assembly: C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\System.dll (this message is harmless)
 desktop: 3000x2000 60Hz; virtual: 3000x2000 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.301744 ms
+UnloadTime: 0.851692 ms
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.745846 ms
+UnloadTime: 0.668307 ms
 
 Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 292.
-Total: 1.215590 ms (FindLiveObjects: 0.043897 ms CreateObjectMapping: 0.022974 ms MarkObjects: 1.131897 ms  DeleteObjects: 0.014769 ms)
+Total: 0.337230 ms (FindLiveObjects: 0.014769 ms CreateObjectMapping: 0.012717 ms MarkObjects: 0.304000 ms  DeleteObjects: 0.004923 ms)
 
 is local player
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 4.468104 ms
+UnloadTime: 3.341539 ms
 card set called
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
@@ -76,13 +76,13 @@ card set called
 
 
 Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 342.
-Total: 0.527179 ms (FindLiveObjects: 0.036923 ms CreateObjectMapping: 0.038974 ms MarkObjects: 0.429128 ms  DeleteObjects: 0.021743 ms)
+Total: 0.432000 ms (FindLiveObjects: 0.035692 ms CreateObjectMapping: 0.026256 ms MarkObjects: 0.352000 ms  DeleteObjects: 0.017230 ms)
 
 card chosen
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-CardModel: Card: DiscoFever DISCO BLAST
+CardModel: Card: DiscoFever STUN STEP
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
