@@ -90,58 +90,6 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &88081553
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4000012283245716, guid: 7bba06ad69bc60c4eb1e3e56f6b71647, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012283245716, guid: 7bba06ad69bc60c4eb1e3e56f6b71647, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012283245716, guid: 7bba06ad69bc60c4eb1e3e56f6b71647, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012283245716, guid: 7bba06ad69bc60c4eb1e3e56f6b71647, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012283245716, guid: 7bba06ad69bc60c4eb1e3e56f6b71647, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012283245716, guid: 7bba06ad69bc60c4eb1e3e56f6b71647, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012283245716, guid: 7bba06ad69bc60c4eb1e3e56f6b71647, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012283245716, guid: 7bba06ad69bc60c4eb1e3e56f6b71647, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000014115715088, guid: 7bba06ad69bc60c4eb1e3e56f6b71647,
-        type: 2}
-      propertyPath: m_OfflineScene
-      value: Offline
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000014115715088, guid: 7bba06ad69bc60c4eb1e3e56f6b71647,
-        type: 2}
-      propertyPath: m_OnlineScene
-      value: Robot_Selection
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 7bba06ad69bc60c4eb1e3e56f6b71647, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &718094418
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,3 +177,45 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1001 &2094964533
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000012283245716, guid: 7bba06ad69bc60c4eb1e3e56f6b71647, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012283245716, guid: 7bba06ad69bc60c4eb1e3e56f6b71647, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012283245716, guid: 7bba06ad69bc60c4eb1e3e56f6b71647, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012283245716, guid: 7bba06ad69bc60c4eb1e3e56f6b71647, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012283245716, guid: 7bba06ad69bc60c4eb1e3e56f6b71647, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012283245716, guid: 7bba06ad69bc60c4eb1e3e56f6b71647, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012283245716, guid: 7bba06ad69bc60c4eb1e3e56f6b71647, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012283245716, guid: 7bba06ad69bc60c4eb1e3e56f6b71647, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7bba06ad69bc60c4eb1e3e56f6b71647, type: 2}
+  m_IsPrefabParent: 0

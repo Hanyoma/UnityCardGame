@@ -61,10 +61,6 @@ public class GameController : NetworkBehaviour
 
         }
         Shuffle(names);
-        foreach(string name in names)
-        {
-            print(name);
-        }
         for (int i = 0; i < 4; ++i)
         {
             GameObject cd = Instantiate(cardPrefab, new Vector3(-7 + i*2, 0, 1), Quaternion.identity) as GameObject;
@@ -97,7 +93,8 @@ public class GameController : NetworkBehaviour
 
     public void CardChosen(CardModel c)
     {
-        if (!isLocalPlayer) return;
+        print("card chosen");
+        print(c);
 
         // c was chosen, send to server and disable all inputs
         print("cardchosen called local player");
@@ -108,31 +105,34 @@ public class GameController : NetworkBehaviour
         GameObject c_gm = c.gameObject;
         hand.Remove(c_gm);
         c_gm.transform.position = new Vector3(-1, 3, 1);
-
-        CmdCardChosen(c.card, GetComponent<NetworkIdentity>().connectionToClient.connectionId);
+        
+        CmdCardChosen((int)c.card.robot, c.card.name, GetComponent<NetworkIdentity>().GetInstanceID());
     }
 
     [Command]
-    private void CmdCardChosen(Card card, int connectionId)
+    private void CmdCardChosen(int robot, string name, int clientId)
     {
         print("CmdCardChosen");
-        RpcCardChosen(card, connectionId);
+        RpcCardChosen(robot, name, clientId);
         // if both people chose their card
         RpcExecuteTurn();
     }
 
     [ClientRpc]
-    void RpcCardChosen(Card c, int origin)
+    void RpcCardChosen(int robot, string name, int clientId)
     {
         print("RpcCardChosen");
-        if(GetComponent<NetworkIdentity>().connectionToClient.connectionId != origin)
+        print("originId: " + clientId);
+        print("localID: " + GetComponent<NetworkIdentity>().GetInstanceID());
+        int myAddr = GetComponent<NetworkIdentity>().GetInstanceID();
+        if (myAddr != clientId)
         {
             print("not the originator");
             opponentCard = Instantiate(cardPrefab, new Vector3(1, 3, 1), Quaternion.identity) as GameObject;
             CardModel cm = opponentCard.GetComponent<CardModel>();
-            cm.card = c;
-            cm.setGameController(this);
+            cm.card = new Card((Card.Robot)robot, name);
             cm.ToggleFace(true);
+            cm.setGameController(this);
         }
     }
 

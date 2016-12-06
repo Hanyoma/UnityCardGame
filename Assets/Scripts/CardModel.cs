@@ -11,6 +11,7 @@ public class CardModel : MonoBehaviour
         get { return _card; }
         set
         {
+            print("card set called");
             _card = (Card) value;
             ToggleFace(false);
         }
