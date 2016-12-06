@@ -70,7 +70,7 @@ public class GameController : NetworkBehaviour
         print("onRobot_SelectClick()");
 
         if (!isLocalPlayer) return;
-        print("is local player")
+        print("is local player");
 
         robot = (Card.Robot)GameObject.Find("Robot_Dropdown").GetComponent<Dropdown>().value;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
