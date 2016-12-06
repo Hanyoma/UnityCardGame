@@ -13,6 +13,7 @@ public class Card {
     private bool _ranged;
     private bool _evadeMelee;
     private bool _evadeRanged;
+    private bool _perfectMelee;
     private int _rangedCloseDist;
     private int _rangedFarDist;
 
@@ -58,6 +59,11 @@ public class Card {
     {
         get { return _ranged; }
     }
+
+    public bool perfectMelee
+    {
+        get { return _perfectMelee; }
+    }
     public bool evadeMelee
     {
         get { return _evadeMelee; }
@@ -87,8 +93,10 @@ public class Card {
         _ranged = false;
         _evadeMelee = false;
         _evadeRanged = false;
+        _perfectMelee = false;
         _rangedCloseDist = 0;
         _rangedFarDist = 0;
+
         if (r == Robot.TheOriginal)
         {
             if (name.Equals("BLINK"))
@@ -99,6 +107,7 @@ public class Card {
             else if (name.Equals("BUCKLE DOWN"))
             {
                 _move = 0;
+                _perfectMelee = true;
                 _melee = true;
             }
             else if (name.Equals("COUNTER"))
