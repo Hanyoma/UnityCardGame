@@ -106,12 +106,16 @@ public class GameController : NetworkBehaviour
     public void CardChosen(CardModel c)
     {
         if (!isLocalPlayer) return;
+
         // c was chosen, send to server and disable all inputs
         print("cardchosen called local player");
         foreach(GameObject cm in hand)
         {
             cm.GetComponent<BoxCollider2D>().enabled = false;
         }
+        GameObject c_gm = c.gameObject;
+        hand.Remove(c_gm);
+        c_gm.transform.position = new Vector3(-1, 3, 1);
     }
 
     private static System.Random rng = new System.Random();

@@ -14,91 +14,71 @@ Platform assembly: C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\
 Loading C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.200 seconds
+- Completed reload, in  0.183 seconds
 Platform assembly: C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\hwangas\Documents\GitHub\UnityCardGame\hurdur3_Data\Managed\System.dll (this message is harmless)
 desktop: 3000x2000 60Hz; virtual: 3000x2000 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 0.860718 ms
+UnloadTime: 1.158154 ms
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.327384 ms
+UnloadTime: 0.776205 ms
 
-Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 283.
-Total: 0.753231 ms (FindLiveObjects: 0.022153 ms CreateObjectMapping: 0.013538 ms MarkObjects: 0.707692 ms  DeleteObjects: 0.009435 ms)
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 289.
+Total: 0.342564 ms (FindLiveObjects: 0.019692 ms CreateObjectMapping: 0.013948 ms MarkObjects: 0.304410 ms  DeleteObjects: 0.004512 ms)
 
 is local player
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.386462 ms
-TRIPLE STEP PART TWO
+UnloadTime: 9.947901 ms
+SPRINT
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-OVERDRIVE
+LASER
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-SALSA SMACKDOWN
+BLINK
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-SIDE STEP
+FLAMETHROWER
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-STUN STEP
+DODGE
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-DISCO BLAST
+LUNGE
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-MOONWALK
+BUCKLE DOWN
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-JUMP
+NAIL GUN
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-ELECTRIC SHUFFLE
+COUNTER
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-TRIPLE STEP PART ONE
+DUCK
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
 
-Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 321.
-Total: 0.326974 ms (FindLiveObjects: 0.022564 ms CreateObjectMapping: 0.018051 ms MarkObjects: 0.257641 ms  DeleteObjects: 0.027897 ms)
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 315.
+Total: 0.432410 ms (FindLiveObjects: 0.027487 ms CreateObjectMapping: 0.018051 ms MarkObjects: 0.366359 ms  DeleteObjects: 0.018871 ms)
 
-Log: connection {1} has been disconnected by timeout; address {::ffff:127.0.0.1:7777}
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-ClientDisconnected due to error: Timeout
+cardchosen called local player
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-UnloadTime: 0.614564 ms
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Component:GetComponentFastPath (System.Type,intptr)
-  at UnityEngine.Component.GetComponent[NetworkIdentity] () [0x00000] in <filename unknown>:0 
-  at UnityEngine.Networking.NetworkBehaviour.get_myView () [0x00000] in <filename unknown>:0 
-  at UnityEngine.Networking.NetworkBehaviour.get_isLocalPlayer () [0x00000] in <filename unknown>:0 
-  at GameController.makeDeck (Scene previousScene, Scene newScene) [0x00000] in <filename unknown>:0 
-  at (wrapper delegate-invoke) UnityEngine.Events.UnityAction`2<UnityEngine.SceneManagement.Scene, UnityEngine.SceneManagement.Scene>:invoke_void__this___Scene_Scene (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.Scene)
-  at UnityEngine.SceneManagement.SceneManager.Internal_ActiveSceneChanged (Scene previousActiveScene, Scene newActiveScene) [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-
-Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 204.
-Total: 0.239589 ms (FindLiveObjects: 0.012307 ms CreateObjectMapping: 0.017230 ms MarkObjects: 0.194051 ms  DeleteObjects: 0.015179 ms)
-
-Setting up 1 worker threads for Enlighten.
-  Thread -> id: 31d4 -> priority: 1 
