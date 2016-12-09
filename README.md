@@ -1,6 +1,6 @@
 # Multiplayer Card Game Developed in Unity
 The purpose of our project is to implement a simple multiplayer game using the Networking API of Unity (High-level overview here: https://docs.unity3d.com/Manual/UNetOverview.html).
-The game is tentatively a turn-based card game implementation of Robot Rumble, a card game that was created and developed by a friend of mine on campus (Kevin Ellenburg).
+The game is a turn-based card game implementation of Robot Rumble, a card game that was created and developed by a friend of mine on campus (Kevin Ellenburg).
  
 ## Robot Rumble Overview:
 Players start with their robots facing each other, 6 steps away. The goal of the game is to have your robot attack and destroy your opponent’s robot. The players have a set number of cards in their hand that allow them to move towards or away from their opponent a number of steps and execute melee or ranged attacks. Players take turns simultaneously by playing one card from their hand. Movement is taken simultaneously, and combat is also simultaneously. If both robots attack at the same time, they deflect each other and neither is destroyed. A winner is determined when one robot attacks another and is not countered.
