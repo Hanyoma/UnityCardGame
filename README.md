@@ -22,12 +22,12 @@ We will use Unity to control the state of the game (location of robots, cards pl
 * After each move, the game logic for WIN/LOSE conditions is performed locally, and each player will check for win/lose conditions and load the appropriate scene.
 
 
-### Summary of Work Completed
+## Summary of Work Completed
 * We designed the CardModel of the cards, and the structure of the deck from scratch using Unity.
 * The only part we did not do ourselves is create the sprite assets (these already existed for the Robot Rumble game, and were provided courtesy of Kevin Ellenburg.
 * We implemented all game logic in the GameController, and also all of the networking via the Unity UNet framework.
 
-### Summary of Work Not Completed
+## Summary of Work Not Completed
 * While the game is networked, it currently only runs on LAN. We still have to implement a game lobby and matchmaking for players to play without being on the same network. This should be fairly trivial using the UNet framework, but we did not have time to complete it before the deadline.
 * The game is still a prototype/proof-of-concept design, many features of the game logic (such as multiple game rounds and multiple characters) are not yet implemented. In addition, there are still some debugging features in the game (such as players being able to see the other player's move before making their own). This would be removed in a full release.
 
